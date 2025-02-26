@@ -21,7 +21,7 @@ def play_alarm():
 
 
 def start_study(session_time:int):
-    global STUDY, BREAK, FLAG_STUDY, FLAG_BREAK
+    global STUDY, BREAK, FLAG_STUDY, FLAG_BREAK, STUDY_SESSION
 
     FLAG_STUDY = False
 
