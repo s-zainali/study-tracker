@@ -29,8 +29,7 @@ def start_study(session_time:int):
 
     while not FLAG_STUDY:
         time.sleep(0.125)
-        STUDY += secs_to_mins(0.1) 
-        STUDY += 0.125
+        STUDY += secs_to_mins(0.125) 
         break_counter += 0.125
 
         if break_counter >= 3.5:
