@@ -9,6 +9,8 @@ FLAG_BREAK = False
 
 BREAK_IN_DEBT = False
 
+STUDY_SESSION = 45
+
 mins_to_secs = lambda minutes : minutes * 60
 secs_to_mins = lambda seconds : seconds / 60
 
@@ -27,16 +29,18 @@ def start_study(session_time:int):
 
     while not FLAG_STUDY:
         time.sleep(0.125)
-        # STUDY += secs_to_mins(0.1) TODO
+        STUDY += secs_to_mins(0.1) 
         STUDY += 0.125
         break_counter += 0.125
 
         if break_counter >= 3.5:
             break_counter = 0
-            # BREAK += secs_to_mins(1) TODO
-            BREAK += 1
+            BREAK += secs_to_mins(1)
+            # BREAK += 1
         
-        if STUDY % 15 == 0:
+        if STUDY % STUDY_SESSION == 0:
+            if STUDY_SESSION > 30:
+                STUDY_SESSION -= 5
             BREAK += 30
 
     FLAG_STUDY = False
@@ -50,7 +54,7 @@ def start_break():
 
     while not FLAG_BREAK:
         time.sleep(0.125)
-        BREAK -= 0.125
+        BREAK -= 0.125 / 60
 
         if not BREAK_IN_DEBT and BREAK <= 0:
             play_alarm()
